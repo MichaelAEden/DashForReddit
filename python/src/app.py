@@ -2,7 +2,12 @@ import os
 
 from flask import Flask, send_from_directory
 
+from route.subreddit import subreddit_blueprint
+
 app = Flask(__name__, static_folder='../../react/build')
+
+# Register API routes
+app.register_blueprint(subreddit_blueprint, url_prefix="/api/subreddit")
 
 
 # Serve React App
