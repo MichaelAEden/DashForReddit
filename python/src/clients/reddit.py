@@ -4,20 +4,18 @@ import praw
 
 class RedditClient():
 
+    _CLIENT_ID = os.environ['CLIENT_ID']
+    _CLIENT_SECRET = os.environ['CLIENT_SECRET']
     # TODO: declare app version constant.
-    USER_AGENT = 'web:DashForReddit:1.0 (by /u/CanadaUDev)'
+    _USER_AGENT = 'web:DashForReddit:1.0 (by /u/CanadaUDev)'
 
     # TODO: should this be a singleton?
     # TODO: are there any network requests made upon initializing the client?
     def __init__(self):
-        # TODO: fail on app start-up if creds are missing.
-        client_id = os.environ['CLIENT_ID']
-        client_secret = os.environ['CLIENT_SECRET']
-
         self._reddit = praw.Reddit(
-            client_id=client_id,
-            client_secret=client_secret,
-            user_agent=RedditClient.USER_AGENT
+            client_id=RedditClient._CLIENT_ID,
+            client_secret=RedditClient._CLIENT_SECRET,
+            user_agent=RedditClient._USER_AGENT
         )
 
     def get_subreddit_by_id(self, subreddit_id):
