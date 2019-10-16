@@ -1,5 +1,4 @@
 import React from 'react';
-import './SubredditNav.css';
 
 export default function SubredditNav(props) {
   return (
